@@ -15,17 +15,22 @@ router.get('/', function(req, res){
 });
 
 // Esto lo metí yo, cuando entra el get con /manola, el res es lo que puse en el res.send()
-router.get('/manola', function(req, res){
+/*router.get('/manola', function(req, res){
 	res.send("Interpretando?")
-});
+});*/
 
 // Otro ejemplo:
-router.get('/site', function(req, res){
+/*router.get('/site', function(req, res){
 	res.send("Candonga!!!!");
-});
+});*/
 
 app.use(router);
 
-app.listen(3000, function(){
+mongoose.connect('mongodb://localhost/tvshows', function(err, res){
+	if(err){
+		console.log('Error: connecting to Database. ' + err);
+	}
+	app.listen(3000, function(){
 	console.log("Node corre en http://localhost:3000");
+	});
 });
